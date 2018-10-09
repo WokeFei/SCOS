@@ -1,2 +1,2 @@
 # SCOS
-科大Androidzuoye
+科大Android作业
