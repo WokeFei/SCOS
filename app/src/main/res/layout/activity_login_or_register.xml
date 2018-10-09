@@ -6,22 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".LoginOrRegister">
 
-    <TextView
-        android:id="@+id/text_labl"
+    <ImageView
+        android:id="@+id/login_image"
+        android:src="@drawable/ic_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:text="LOGIN"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        />
 
     <TextView
         android:id="@+id/text_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/text_labl"
+        android:layout_below="@+id/login_image"
         android:layout_marginTop="50dp"
         android:text="登录名: "
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -59,31 +59,23 @@
 
     <Button
         android:id="@+id/button_login"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_password"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
         android:text="登录" />
 
     <Button
         android:id="@+id/button_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button_login"
-        android:layout_centerHorizontal="true"
-        android:text="返回"/>
-
-    <ProgressBar
-        android:id="@+id/bar_load"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/button_login"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_centerHorizontal="true"
-        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_below="@+id/button_back"
-        android:max="100"
-        android:progress="0"
-        android:layout_marginTop="20dp"
-        />
+        android:text="返回"/>
 
 </RelativeLayout>
