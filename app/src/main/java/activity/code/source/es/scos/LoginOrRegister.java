@@ -11,15 +11,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import es.source.code.model.User;
+
 import static android.view.View.VISIBLE;
 
 public class LoginOrRegister extends AppCompatActivity implements View.OnClickListener {
     // 实例化各个组件
     private Button button_login;
+    private Button button_register;
     private Button button_back;
     private EditText edit_user;
     private EditText edit_password;
     private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +32,10 @@ public class LoginOrRegister extends AppCompatActivity implements View.OnClickLi
         button_back = (Button) findViewById(R.id.button_back);
         edit_user = (EditText) findViewById(R.id.edit_user);
         edit_password = (EditText) findViewById(R.id.edit_password);
+        button_register = (Button) findViewById(R.id.button_register);
         button_back.setOnClickListener(this);
         button_login.setOnClickListener(this);
+        button_register.setOnClickListener(this);
 
     }
 
@@ -53,8 +59,11 @@ public class LoginOrRegister extends AppCompatActivity implements View.OnClickLi
                         // 判断输入框中的内容是否符合要求
                         if(edit_user.getText().toString().matches(regex) && edit_password.getText().toString().matches(regex)){
                             // 屏幕跳转至 MainScreen，并向 MainScreen 类传 递一个数据 String 值为“LoginSuccess”
+                            User loginUser = new User(edit_user.getText().toString(),edit_password.getText().toString(),true);
                             Intent intent = new Intent(LoginOrRegister.this,MainScreen.class);
                             intent.putExtra("extra_data","LoginSuccess");
+                            // 使User类序列化
+                            intent.putExtra("current_user",loginUser);
                             startActivity(intent);
                         }
                         if (!edit_user.getText().toString().matches(regex)){
@@ -68,14 +77,40 @@ public class LoginOrRegister extends AppCompatActivity implements View.OnClickLi
                     }
                 },2000);    //延迟两秒
                 break;
+
+            case R.id.button_register:
+                if(isMatch(edit_user.getText().toString())&&isMatch((edit_password.getText().toString()))){
+                    User loginUser = new User(edit_user.getText().toString(),edit_password.getText().toString(),false);
+                    Intent intent = new Intent(LoginOrRegister.this,MainScreen.class);
+                    intent.putExtra("extra_data","RegisterSuccess");
+                    // 使User类序列化
+                    intent.putExtra("current_user",loginUser);
+                    startActivity(intent);
+                }
+                if(!isMatch(edit_user.getText().toString())){
+                    edit_user.setError("输入内容不符合规则");
+                }
+                if(!isMatch(edit_password.getText().toString())){
+                    edit_password.setError("输入内容不符合规则");
+                }
+                break;
+
             case R.id.button_back:
                 Intent intent = new Intent(this,MainScreen.class);
                 intent.putExtra("extra_data","Return");
                 startActivity(intent);
                 break;
+
             default:
                 break;
         }
+    }
+
+    // 定义个方法判断输入框文本是否匹配我们要的格式
+    private Boolean isMatch(String str){
+        // 匹配模式
+        String regex = "^[a-z0-9A-Z]+$";
+        return str.matches(regex);
     }
 
 

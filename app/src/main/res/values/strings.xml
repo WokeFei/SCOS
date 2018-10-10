@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SCOS</string>
+    <string name="title_activity_food_view">FoodView</string>
 </resources>
