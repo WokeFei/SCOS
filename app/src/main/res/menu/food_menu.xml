@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ordered"
+        android:title="已点菜单">
+    </item>
+    <item
+        android:id="@+id/cheakOrder"
+        android:title="查看订单">
+    </item>
+    <item
+        android:id="@+id/askForHelp"
+        android:title="呼叫服务">
+    </item>
+
+
+
+
+</menu>

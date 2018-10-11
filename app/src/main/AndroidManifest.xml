@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".SCOSEntry"></activity>
         <activity
             android:name=".MainScreen"
@@ -20,22 +21,20 @@
             android:permission="scos.permission.ACCESSSCOS">
             <intent-filter>
                 <action android:name="scos.intent.action.SCOSMAIN" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="scos.intent.category.SCOSLAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".LoginOrRegister">
+        </activity>
+
+        <activity android:name=".FoodView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FoodView"
-            android:label="@string/title_activity_food_view"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
     </application>
 
 </manifest>

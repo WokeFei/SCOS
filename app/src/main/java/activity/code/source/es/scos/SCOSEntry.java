@@ -21,7 +21,6 @@ public class SCOSEntry extends AppCompatActivity implements View.OnTouchListener
         view.setOnTouchListener(this);
         view.setLongClickable(true);
         gd = new GestureDetector((GestureDetector.OnGestureListener)this);
-
     }
 
 
