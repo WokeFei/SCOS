@@ -43,9 +43,9 @@ public class BaseFoodFragment extends Fragment {
 
     public void initFoods(){
         for (int i = 0;i < 15;i++){
-            Food coldFood = new Food(R.drawable.ic_dish,"10","红烧肉");
+            Food coldFood = new Food(R.drawable.ic_dish,"10元","蔬菜");
             foodlist.add(coldFood);
-            Food coldFood_2 = new Food(R.drawable.ic_help,"20","衣服");
+            Food coldFood_2 = new Food(R.drawable.ic_help,"20元","筷子");
             foodlist.add(coldFood_2);
         }
     }

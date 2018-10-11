@@ -1,5 +1,6 @@
 package activity.code.source.es.scos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -55,6 +56,8 @@ public class FoodView extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.ordered:
+                Intent intent = new Intent(this,FoodOrderView.class);
+                startActivity(intent);
                 break;
             case R.id.cheakOrder:
                 break;

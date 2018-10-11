@@ -6,13 +6,23 @@ public class Food {
     private int imageView;
     private String price;
     private String name;
-    private String btn_order;
+    private boolean order;
+    private int store;
+
+    public Food(int imageView,String price,String name,boolean order,int store){
+        this.imageView = imageView;
+        this.price = price;
+        this.name = name;
+        this.order = order;
+        this.store = store;
+    }
 
     public Food(int imageView,String price,String name){
         this.imageView = imageView;
         this.price = price;
         this.name = name;
     }
+
 
     public int getImageView() {
         return imageView;
@@ -38,11 +48,19 @@ public class Food {
         this.price = price;
     }
 
-    public String getBtn_order() {
-        return btn_order;
+    public int getStore() {
+        return store;
     }
 
-    public void setBtn_order(String btn_order) {
-        this.btn_order = btn_order;
+    public void setStore(int store) {
+        this.store = store;
+    }
+
+    public boolean isOrder() {
+        return order;
+    }
+
+    public void setOrder(boolean order) {
+        this.order = order;
     }
 }
