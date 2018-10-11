@@ -68,7 +68,22 @@ public class MainScreen extends AppCompatActivity implements AdapterView.OnItemC
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position){
             case 0:
-                Toast.makeText(this,"this",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this,FoodView.class);
+                startActivity(intent);
+                break;
+            case 1:
+                Intent intent1 = new Intent(this,FoodOrderView.class);
+                startActivity(intent1);
+                break;
+            case 2:
+                Intent intent2 = new Intent(this,LoginOrRegister.class);
+                startActivity(intent2);
+                break;
+            case 3:
+                break;
+            default:
+                break;
         }
+
     }
 }
