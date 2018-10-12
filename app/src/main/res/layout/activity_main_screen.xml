@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".MainScreen">
 
-
     <GridView
     android:id="@+id/gridView"
     android:layout_width="wrap_content"
@@ -15,7 +14,5 @@
     android:layout_weight="1"
     android:numColumns="2">
     </GridView>
-
-
 
 </LinearLayout>
