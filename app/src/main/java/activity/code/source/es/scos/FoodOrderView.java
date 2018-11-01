@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.source.code.model.User;
+
 public class FoodOrderView extends AppCompatActivity {
 
     private TabLayout tabLayout;
@@ -23,11 +25,17 @@ public class FoodOrderView extends AppCompatActivity {
     private List<Fragment> list;
     private MyAdapter myAdapter;
     private String[] title = {"未下单菜","已下单菜"};
+    private User user;
+    private int flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_order_view);
+        //获取User对象
+        Intent intent = getIntent();
+        user = (User) intent.getSerializableExtra("currentUser");
+        flag = (int) intent.getIntExtra("flag",0);
 
         //实例化
         viewPager = (ViewPager) findViewById(R.id.food_order_viewPager);
@@ -41,7 +49,10 @@ public class FoodOrderView extends AppCompatActivity {
         //viewPager的适配器
         myAdapter = new MyAdapter(getSupportFragmentManager());
         viewPager.setAdapter(myAdapter);
+        viewPager.setCurrentItem(flag);
         tabLayout.setupWithViewPager(viewPager);
+
+
     }
 
     // 启动本活动

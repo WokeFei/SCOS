@@ -1,6 +1,7 @@
 package activity.code.source.es.scos;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,11 +49,13 @@ public class BaseFoodFragment extends Fragment {
     }
 
     public void initFoods(){
-        for (int i = 0;i < 15;i++){
+        for (int i = 0;i < 3;i++){
             Food coldFood = new Food(R.drawable.ic_dish,"10","蔬菜");
             foodlist.add(coldFood);
             Food coldFood_2 = new Food(R.drawable.ic_help,"20","筷子");
             foodlist.add(coldFood_2);
+            Food coldFood_3 = new Food(R.drawable.ic_logo,"30","店家");
+            foodlist.add(coldFood_3);
         }
     }
 
@@ -99,7 +103,10 @@ public class BaseFoodFragment extends Fragment {
                 public void onClick(View v) {
                     int postion = holder.getAdapterPosition();
                     Food food = mFoodList.get(postion);
-                    Toast.makeText(v.getContext(),"you clicked view" + food.getName(),Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(),FoodDetailed.class);
+                    intent.putExtra("foodlist", (Serializable) mFoodList);
+                    intent.putExtra("index",postion);
+                    startActivity(intent);
                 }
             });
             // 点击点菜按钮时的响应事件

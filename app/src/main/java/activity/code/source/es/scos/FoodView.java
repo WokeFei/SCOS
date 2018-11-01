@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.source.code.model.User;
+
 public class FoodView extends AppCompatActivity {
 
     private TabLayout tabLayout;
@@ -23,6 +25,8 @@ public class FoodView extends AppCompatActivity {
     private List<Fragment> list;
     private MyAdapter myadapter;
     private String[] titles= {"凉菜","热菜","海鲜","酒水"};
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,10 @@ public class FoodView extends AppCompatActivity {
         // 绑定
         tabLayout.setupWithViewPager(viewPager);
 
+        //获取传递来的user对象
+        Intent intent = getIntent();
+        user = (User) intent.getSerializableExtra("currentUser");
+
     }
     // 重写foodView活动上的菜单
     @Override
@@ -57,9 +65,15 @@ public class FoodView extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.ordered:
                 Intent intent = new Intent(this,FoodOrderView.class);
+                intent.putExtra("currentUser",user);
+                intent.putExtra("flag",0);
                 startActivity(intent);
                 break;
             case R.id.cheakOrder:
+                Intent intent1 = new Intent(this,FoodOrderView.class);
+                intent1.putExtra("currentUser",user);
+                intent1.putExtra("flag",1);
+                startActivity(intent1);
                 break;
             case R.id.askForHelp:
                 break;

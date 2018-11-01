@@ -1,8 +1,10 @@
 package es.source.code.model;
 
+import java.io.Serializable;
+
 import activity.code.source.es.scos.R;
 
-public class Food {
+public class Food implements Serializable{
     private int imageView;
     private String price;
     private String name;

@@ -1,6 +1,7 @@
 package activity.code.source.es.scos;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.source.code.model.Food;
+import es.source.code.model.User;
 
 
 public class OrderedFragment extends Fragment {
@@ -32,6 +34,7 @@ public class OrderedFragment extends Fragment {
     private TextView ordered_count;
     private TextView ordered_price;
     private Button ordered_pay;
+    private User user;
 
     @Nullable
     @Override
@@ -39,6 +42,9 @@ public class OrderedFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_ordered_list,container,false);
         // Inflate the layout for this fragment
         initFoods();
+
+        Intent intent = getActivity().getIntent();
+        user = (User) intent.getSerializableExtra("currentUser");
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_ordered);
         OrderedAdapter orderedAdapter = new OrderedAdapter(getActivity(),orderedList);
@@ -64,7 +70,14 @@ public class OrderedFragment extends Fragment {
         ordered_pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"付款成功，正在准备饭菜",Toast.LENGTH_SHORT).show();
+                if(user != null){
+                    if (user.isOldUser())
+                        Toast.makeText(getActivity(),"老顾客，您本次可享受七折优惠",Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(getActivity(),"下次再来就有优惠了",Toast.LENGTH_SHORT).show();
+                }else
+                    Toast.makeText(getActivity(),"注册账户有优惠哦",Toast.LENGTH_SHORT).show();
+
 
             }
         });

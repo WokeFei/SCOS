@@ -20,6 +20,7 @@ public class MainScreen extends AppCompatActivity implements AdapterView.OnItemC
     // 定义两个数组
     private int[] image = {R.drawable.ic_dish,R.drawable.ic_order,R.drawable.ic_user,R.drawable.ic_help};
     private String[] text = {"点菜","订单","登录/注册","帮助"};
+    private User user;
 
 
     @Override
@@ -28,7 +29,7 @@ public class MainScreen extends AppCompatActivity implements AdapterView.OnItemC
         Intent intent = getIntent();
         // 接收活动传递的值
         String data = intent.getStringExtra("extra_data");
-        User user = (User) intent.getSerializableExtra("current_user");
+        user = (User) intent.getSerializableExtra("current_user");
         setContentView(R.layout.activity_main_screen);
         switch (data){
             case "RegisterSuccess":
@@ -67,8 +68,10 @@ public class MainScreen extends AppCompatActivity implements AdapterView.OnItemC
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position){
+            // 点击点菜按钮时
             case 0:
                 Intent intent = new Intent(this,FoodView.class);
+                intent.putExtra("currentUser",user);
                 startActivity(intent);
                 break;
             case 1:

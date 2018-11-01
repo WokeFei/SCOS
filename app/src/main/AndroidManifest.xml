@@ -20,7 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainScreen"
             android:exported="true"
@@ -32,11 +31,12 @@
                 <category android:name="scos.intent.category.SCOSLAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginOrRegister"></activity>
-        <activity android:name=".FoodView">
+        <activity android:name=".LoginOrRegister" />
+        <activity android:name=".FoodView"></activity>
+        <activity android:name=".FoodOrderView" />
+        <activity android:name=".FoodDetailed">
 
         </activity>
-        <activity android:name=".FoodOrderView"></activity>
     </application>
 
 </manifest>
