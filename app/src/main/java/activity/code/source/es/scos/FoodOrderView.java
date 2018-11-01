@@ -1,5 +1,7 @@
 package activity.code.source.es.scos;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -32,13 +34,22 @@ public class FoodOrderView extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.food_order_tabLayout);
         //页面，数据源
         list = new ArrayList<>();
+
         list.add(new NotOrderFragment());
         list.add(new OrderedFragment());
+
         //viewPager的适配器
         myAdapter = new MyAdapter(getSupportFragmentManager());
         viewPager.setAdapter(myAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
+
+    // 启动本活动
+    public static void actionstart(Context context){
+        Intent intent = new Intent(context,FoodOrderView.class);
+        context.startActivity(intent);
+    }
+
     class MyAdapter extends FragmentPagerAdapter{
 
         public MyAdapter(FragmentManager fm){
